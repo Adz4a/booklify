@@ -1,0 +1,81 @@
+com/example/booklify/request/Services.java
+ com.example.booklify.request.Services
+com/example/booklify/utils/Credentials.java
+ com.example.booklify.utils.Credentials
+com/example/booklify/adapter/HomeAdapter.java
+ com.example.booklify.adapter.HomeAdapter
+ com.example.booklify.adapter.HomeAdapter$1
+ com.example.booklify.adapter.HomeAdapter$viewHolder
+com/example/booklify/executor/AppExecutor.java
+ com.example.booklify.executor.AppExecutor
+com/example/booklify/fragments/BasketFragment.java
+ com.example.booklify.fragments.BasketFragment
+com/example/booklify/adapter/BookFragmentAdapter.java
+ com.example.booklify.adapter.BookFragmentAdapter
+ com.example.booklify.adapter.BookFragmentAdapter$1
+ com.example.booklify.adapter.BookFragmentAdapter$viewHolder
+com/example/booklify/adapter/BookmarkAdapter.java
+ com.example.booklify.adapter.BookmarkAdapter
+ com.example.booklify.adapter.BookmarkAdapter$1
+ com.example.booklify.adapter.BookmarkAdapter$viewHolder
+com/example/booklify/adapter/BasketAdapter.java
+ com.example.booklify.adapter.BasketAdapter
+ com.example.booklify.adapter.BasketAdapter$1
+ com.example.booklify.adapter.BasketAdapter$viewHolder
+com/example/booklify/fragments/ProfileFragment.java
+ com.example.booklify.fragments.ProfileFragment
+ com.example.booklify.fragments.ProfileFragment$1
+ com.example.booklify.fragments.ProfileFragment$2
+com/example/booklify/activity/HomeActivity.java
+ com.example.booklify.activity.HomeActivity
+ com.example.booklify.activity.HomeActivity$1
+com/example/booklify/response/BookSearchResponse.java
+ com.example.booklify.response.BookSearchResponse
+com/example/booklify/fragments/HomeFragment.java
+ com.example.booklify.fragments.HomeFragment
+com/example/booklify/adapter/RecommendationAdapter.java
+ com.example.booklify.adapter.RecommendationAdapter
+ com.example.booklify.adapter.RecommendationAdapter$1
+ com.example.booklify.adapter.RecommendationAdapter$viewHolder
+com/example/booklify/Comment.java
+ com.example.booklify.Comment
+com/example/booklify/activity/RegisterActivity.java
+ com.example.booklify.activity.RegisterActivity
+ com.example.booklify.activity.RegisterActivity$1
+com/example/booklify/activity/ChangePasswordActivity.java
+ com.example.booklify.activity.ChangePasswordActivity
+ com.example.booklify.activity.ChangePasswordActivity$1
+ com.example.booklify.activity.ChangePasswordActivity$2
+ com.example.booklify.activity.ChangePasswordActivity$3
+com/example/booklify/BuildConfig.java
+ com.example.booklify.BuildConfig
+com/example/booklify/activity/BookmarkActivity.java
+ com.example.booklify.activity.BookmarkActivity
+ com.example.booklify.activity.BookmarkActivity$1
+com/example/booklify/fragments/BookFragment.java
+ com.example.booklify.fragments.BookFragment
+com/example/booklify/response/BookResponse.java
+ com.example.booklify.response.BookResponse
+com/example/booklify/repositories/BookRepository.java
+ com.example.booklify.repositories.BookRepository
+com/example/booklify/viewmodels/BookListViewModel.java
+ com.example.booklify.viewmodels.BookListViewModel
+com/example/booklify/model/BookModel.java
+ com.example.booklify.model.BookModel
+ com.example.booklify.model.BookModel$1
+com/example/booklify/utils/BookApi.java
+ com.example.booklify.utils.BookApi
+com/example/booklify/activity/MainActivity.java
+ com.example.booklify.activity.MainActivity
+ com.example.booklify.activity.MainActivity$1
+ com.example.booklify.activity.MainActivity$2
+com/example/booklify/request/BookApiClient.java
+ com.example.booklify.request.BookApiClient
+ com.example.booklify.request.BookApiClient$1
+ com.example.booklify.request.BookApiClient$RetrieveBooksRunnable
+com/example/booklify/activity/DetailActivity.java
+ com.example.booklify.activity.DetailActivity
+ com.example.booklify.activity.DetailActivity$1
+com/example/booklify/adapter/ShopAdapter.java
+ com.example.booklify.adapter.ShopAdapter
+ com.example.booklify.adapter.ShopAdapter$viewHolder
