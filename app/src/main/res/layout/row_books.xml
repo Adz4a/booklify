@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="25dp"
+    android:layout_marginLeft="10dp">
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="185dp">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/harry_potter"
+        android:scaleType="fitXY"
+        app:shapeAppearanceOverlay="@style/roundedImage"
+        />
+
+        
+    </LinearLayout>
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is Header Text"
+        android:textColor="#000"
+        android:textSize="17dp"
+        android:layout_marginLeft="7dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_rating"/>
+
+
+
+</LinearLayout>
