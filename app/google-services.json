@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "429808663509",
+    "firebase_url": "https://authentification-e6f64-default-rtdb.firebaseio.com",
+    "project_id": "authentification-e6f64",
+    "storage_bucket": "authentification-e6f64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429808663509:android:9a21995e32cc481d381b5c",
+        "android_client_info": {
+          "package_name": "com.example.booklify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429808663509-6vp525l2sgfhh9c5413bkk0n40t99nk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3-D_eb6AOho5TMdKACbpmuCQ6th0N-7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429808663509-6vp525l2sgfhh9c5413bkk0n40t99nk6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
