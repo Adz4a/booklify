@@ -33,7 +33,7 @@ public class CategoryActivity extends AppCompatActivity {
     BookListViewModel viewModel;
 
     CategoryAdapter categoryAdapter;
-    boolean fantasy,history,classic, adventure,romance;
+    boolean fantasy,history,classic, adventure,romance,health;
     TextView category;
 
     @Override
@@ -56,6 +56,7 @@ public class CategoryActivity extends AppCompatActivity {
         classic = getIntent().getBooleanExtra("classic",false);
         adventure = getIntent().getBooleanExtra("adventure",false);
         romance = getIntent().getBooleanExtra("romance",false);
+        health = getIntent().getBooleanExtra("health",false);
 
         if (fantasy){
             category.setText(getIntent().getStringExtra("category"));
@@ -76,6 +77,10 @@ public class CategoryActivity extends AppCompatActivity {
         if(romance){
             category.setText(getIntent().getStringExtra("category"));
             getRomance();
+        }
+        if(health){
+            category.setText(getIntent().getStringExtra("category"));
+            getHealth();
         }
 
 
@@ -214,6 +219,28 @@ public class CategoryActivity extends AppCompatActivity {
                     categoryModel = new ArrayList<BookModel>();
                     for (BookModel categoryModels: bookModelHolder){
                         if (categoryModels.getCategory() == 5){
+                            categoryModel.add(categoryModels);
+                        }
+                    }
+
+                    categoryAdapter.setMovieList(categoryModel);
+                    recyclerView.setAdapter(categoryAdapter);
+
+                }
+            }
+        });
+    }
+
+    private void getHealth() {
+        viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
+        viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
+            @Override
+            public void onChanged(BookResponse bookResponse) {
+                if(bookResponse != null) {
+                    bookModelHolder = bookResponse.getBooks();
+                    categoryModel = new ArrayList<BookModel>();
+                    for (BookModel categoryModels: bookModelHolder){
+                        if (categoryModels.getCategory() == 6){
                             categoryModel.add(categoryModels);
                         }
                     }

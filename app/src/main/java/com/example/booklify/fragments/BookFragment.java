@@ -191,21 +191,21 @@ public class BookFragment extends Fragment{
                     });
         }
 
-        //Historical Novel
-//        if(type != null && type.equalsIgnoreCase("5")){
-//            db.collection("books").whereEqualTo("category","5")
-//                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                            for (DocumentSnapshot documentSnapshot:task.getResult().getDocuments()){
-//                                BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
-//                                bookModelHolder.add(viewAllModel);
-//                                bookAdapter.notifyDataSetChanged();
-//                                recyclerView.setVisibility(View.VISIBLE);
-//                            }
-//                        }
-//                    });
-//        }
+//      Health
+        if(type != null && type.equalsIgnoreCase("6")){
+            db.collection("books").whereEqualTo("category","6")
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            for (DocumentSnapshot documentSnapshot:task.getResult().getDocuments()){
+                                BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
+                                bookModelHolder.add(viewAllModel);
+                                bookAdapter.notifyDataSetChanged();
+                                recyclerView.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+        }
 
         viewModel.makeApiCall();
 

@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(),CategoryActivity.class);
-                intent.putExtra("romance",true);
+                intent.putExtra("fantasy",true);
                 intent.putExtra("category","Fantasy");
                 startActivity(intent);
             }
@@ -178,6 +178,17 @@ public class HomeFragment extends Fragment {
                 Intent intent = new Intent(getContext(),CategoryActivity.class);
                 intent.putExtra("history",true);
                 intent.putExtra("category","History");
+                startActivity(intent);
+            }
+        });
+
+        Button health = view.findViewById(R.id.health);
+        health.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CategoryActivity.class);
+                intent.putExtra("health",true);
+                intent.putExtra("category","Health");
                 startActivity(intent);
             }
         });
