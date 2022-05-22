@@ -19,7 +19,6 @@ import com.example.booklify.R;
 import com.example.booklify.adapter.BookmarkAdapter;
 import com.example.booklify.model.BookmarkModel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -91,8 +90,6 @@ public class BookmarkActivity extends AppCompatActivity {
         bookmarkAdapter = new BookmarkAdapter(bookmarkModel,this );
         recyclerView.setAdapter(bookmarkAdapter);
 
-
-
         if(mAuth.getCurrentUser() != null) {
 
             mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
@@ -112,9 +109,6 @@ public class BookmarkActivity extends AppCompatActivity {
                                         bookmarkModels.setDocumentId(bookId);
                                         bookmarkModel.add(bookmarkModels);
                                         bookmarkAdapter.notifyDataSetChanged();
-
-
-
                                     }
                                 }
                             }

@@ -13,13 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.booklify.R;
 import com.example.booklify.activity.books.DetailActivity;
 import com.example.booklify.model.BookModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAdapter.MyViewHolder>  {
@@ -58,7 +56,6 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(context, DetailActivity.class);
                 intent.putExtra("id", bookList.get(position).getId());
                 intent.putExtra("title", bookList.get(position).getTitle());
@@ -85,8 +82,6 @@ public class RecommendationAdapter extends RecyclerView.Adapter<RecommendationAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title,content;
         ImageView imageView;
-
-
 
         public MyViewHolder(View itemView)  {
             super(itemView);

@@ -35,8 +35,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
         enterEmail = findViewById(R.id.changePassword);
         textEmail = findViewById(R.id.email);
 
-//      getIdBooks();
-
     }
 
     public void onClick(View view) {
@@ -65,7 +63,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             return;
         }
 
-
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -79,50 +76,5 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-//    private void getIdBooks() {
-//
-//        Call<BookModel> call = bookApi.getIdBooks(2);
-//
-//        call.enqueue(new Callback<BookModel>() {
-//            @Override
-//            public void onResponse(Call<BookModel> call, Response<BookModel> response) {
-//
-//                if (!response.isSuccessful()) {
-//                    textView.setText("Code: " + response.code());
-//                    return;
-//                }
-//
-//                BookModel book = response.body();
-//
-//                String content = "";
-//                content += "Title: " + book.getTitle() + "\n";
-//                content += "Category: " + book.getCategory() + "\n";
-//                content += "Author: " + book.getAuthor() + "\n";
-//                content += "Content: " + book.getContent() + "\n\n";
-//
-//                textView.append(content);
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<BookModel> call, Throwable t) {
-//                textView.setText(t.getMessage());
-//            }
-//        });
-//    }
-
-
-
-
-
-
-
-
-
-
 
 }

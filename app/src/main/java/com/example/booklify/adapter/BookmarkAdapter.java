@@ -40,15 +40,12 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.viewHo
         mAuth = FirebaseAuth.getInstance();
     }
 
-
-
     @NonNull
     @Override
     public BookmarkAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.row_bookmark,parent,false);
         return new BookmarkAdapter.viewHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull BookmarkAdapter.viewHolder holder, int position) {
@@ -60,7 +57,6 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.viewHo
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(context, DetailActivity.class);
                 intent.putExtra("id", bookModelHolder.get(position).getId());
                 intent.putExtra("title", bookModelHolder.get(position).getTitle());

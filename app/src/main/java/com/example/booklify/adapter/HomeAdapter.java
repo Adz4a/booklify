@@ -55,7 +55,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(context, DetailActivity.class);
                 intent.putExtra("id", bookList.get(position).getId());
                 intent.putExtra("title", bookList.get(position).getTitle());

@@ -36,16 +36,12 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         registerButton = findViewById(R.id.registerButton);
-//        registerButton.setOnClickListener((View.OnClickListener) this);
-
         textUsername = findViewById(R.id.username);
         textEmail = findViewById(R.id.email);
         textPassword = findViewById(R.id.password);
         textConfirmPassword = findViewById(R.id.confirmPassword);
 
-
     }
-
 
     public void onClick(View view){
         switch (view.getId()){
@@ -82,13 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-
             if (password.isEmpty()){
             textPassword.setError("Password is required");
             textPassword.requestFocus();
             return;
             }
-
 
             if (confirmPassword.isEmpty()){
             textConfirmPassword.setError("Confirm Password is required");
@@ -102,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
             }
 
-        if (!password.equals(confirmPassword)){
+            if (!password.equals(confirmPassword)){
             textConfirmPassword.setError("Password doesn't match!");
             textConfirmPassword.requestFocus();
             return;
@@ -137,8 +131,5 @@ public class RegisterActivity extends AppCompatActivity {
                 });
 
     }
-
-
-
 
 }

@@ -1,11 +1,8 @@
 package com.example.booklify.profile;
 
 
-import android.bluetooth.le.ScanSettings;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +35,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mahfa.dnswitch.DayNightSwitch;
-import com.mahfa.dnswitch.DayNightSwitchAnimListener;
 import com.mahfa.dnswitch.DayNightSwitchListener;
 
 public class ProfileFragment extends Fragment {
@@ -50,16 +46,11 @@ public class ProfileFragment extends Fragment {
     private ImageButton editProfile;
 
     private DayNightSwitch dayNightSwitch;
-    public static final String TAG = "MainActivity";
-    public static final String KEY_DAY_NIGHT_SWITCH_STATE = "day_night_switch_state";
-    RelativeLayout background_view;
-
 
     LinearLayout bookmark,changePassword;
     Button logout;
 
     FirebaseAuth mAuth;
-    private DatabaseReference databaseReference;
     private ShapeableImageView profileImage;
     ProgressBar progressBar;
 
@@ -105,9 +96,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-
-
         dayNightSwitch = view.findViewById(R.id.day_night_switch);
 
         dayNightSwitch.setListener(new DayNightSwitchListener() {
@@ -124,10 +112,6 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
-
-
-
-
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");

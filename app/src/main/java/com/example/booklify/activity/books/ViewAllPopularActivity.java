@@ -70,10 +70,8 @@ public class ViewAllPopularActivity extends AppCompatActivity {
                             bookModelList.add(bookModel);
                         }
                     }
-
                     viewAllPopularAdapter.setMovieList(bookModelList);
                     recyclerView.setAdapter(viewAllPopularAdapter);
-
                 }
             }
         });
@@ -109,7 +107,6 @@ public class ViewAllPopularActivity extends AppCompatActivity {
                 filteredList.add(item);
             }
         }
-
         viewAllPopularAdapter.filterList(filteredList);
     }
 

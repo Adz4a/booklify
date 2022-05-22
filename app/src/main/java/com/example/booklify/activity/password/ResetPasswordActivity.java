@@ -32,8 +32,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         enterEmail = findViewById(R.id.changePassword);
         textEmail = findViewById(R.id.email);
-
-
     }
 
 
@@ -62,7 +60,6 @@ public class ResetPasswordActivity extends AppCompatActivity {
             textEmail.requestFocus();
             return;
         }
-
 
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

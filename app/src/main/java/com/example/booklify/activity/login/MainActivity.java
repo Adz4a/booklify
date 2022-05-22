@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booklify.R;
 import com.example.booklify.activity.HomeActivity;
-import com.example.booklify.activity.password.ResetPasswordActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -28,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView resetPassword;
 
     private FirebaseAuth mAuth;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void onClick(View view){
         switch (view.getId()){
             case R.id.register:
@@ -61,12 +57,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.login:
                 userLogin();
                 break;
-
-
         }
     }
-
-
 
     private void userLogin() {
         String email = textEmail.getText().toString().trim();
@@ -93,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -101,12 +92,6 @@ public class MainActivity extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));
-//                    if(user.isEmailVerified()){
-//                        startActivity(new Intent( getApplicationContext(), MainActivity.class));
-//                    }else{
-//                        user.sendEmailVerification();
-//                        Toast.makeText(getApplicationContext(), "Check your email to verify your account!",Toast.LENGTH_LONG).show();
-//                    }
                 }else{
                     Toast.makeText(getApplicationContext(), "Failed to login! Please check your credentials!", Toast.LENGTH_LONG).show();
                 }

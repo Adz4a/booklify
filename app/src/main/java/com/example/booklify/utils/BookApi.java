@@ -1,6 +1,5 @@
 package com.example.booklify.utils;
 
-import com.example.booklify.model.BookModel;
 import com.example.booklify.response.BookResponse;
 
 import java.util.Map;
@@ -20,11 +19,6 @@ public interface BookApi {
     @GET("book/")
     Call<BookResponse> getBooks();
 
-    @GET("book/{id}/")
-    Call<BookModel> getIdBooks(@Path("id") int id);
-
-//    @GET("posts/{id}/comments")
-//    Call<List<Comment>> getComments(@Path("id") int postId);
 
     @POST("posts")
     Call<BookResponse> createBooks(@Body BookResponse post);

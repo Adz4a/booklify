@@ -222,10 +222,8 @@ public class CategoryActivity extends AppCompatActivity {
                             categoryModel.add(categoryModels);
                         }
                     }
-
                     categoryAdapter.setMovieList(categoryModel);
                     recyclerView.setAdapter(categoryAdapter);
-
                 }
             }
         });
@@ -261,7 +259,6 @@ public class CategoryActivity extends AppCompatActivity {
                 filteredList.add( item);
             }
         }
-
         categoryAdapter.filterList(filteredList);
     }
 }

@@ -13,18 +13,6 @@ import retrofit2.Response;
 
 public class BookListViewModel extends ViewModel {
 
-//    private MutableLiveData<List<BookModel>> mBooks = new MutableLiveData<>();
-//
-//    private BookRepository bookRepository;
-//
-//    public BookListViewModel() {
-//        bookRepository = BookRepository.getInstance();
-//    }
-//
-//    public LiveData<List<BookModel>> getBooks() {
-//        return bookRepository.getBooks();
-//    }
-
     private MutableLiveData<BookResponse> bookList;
 
     public BookListViewModel() {
@@ -52,7 +40,4 @@ public class BookListViewModel extends ViewModel {
         });
     }
 
-//    public void searchBookApi(int id){
-//        bookRepository.searchBookApi(id);
-//    }
 }

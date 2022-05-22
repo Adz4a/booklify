@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booklify.R;
-import com.example.booklify.activity.books.BookmarkActivity;
 import com.example.booklify.activity.books.CategoryActivity;
-import com.example.booklify.activity.books.DetailActivity;
 import com.example.booklify.activity.books.ViewAllPopularActivity;
 import com.example.booklify.adapter.HomeAdapter;
 import com.example.booklify.adapter.RecommendationAdapter;
@@ -60,9 +57,6 @@ public class HomeFragment extends Fragment {
     private DatabaseReference reference;
     private String userId;
 
-    CategoryActivity categoryActivity;
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,8 +64,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.books);
         rcdRecyclerView = view.findViewById(R.id.rcd);
-
-        EditText editText = view.findViewById(R.id.filter);
 
         textUsername = view.findViewById(R.id.username);
         getUsername();
@@ -192,11 +184,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
-
-
 
         return view;
     }

@@ -21,30 +21,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyViewHolder>  {
-private Context context;
-private List<BookModel> bookList;
+    private Context context;
+    private List<BookModel> bookList;
 
 
-public CategoryAdapter(Context context, List<BookModel> bookList) {
+    public CategoryAdapter(Context context, List<BookModel> bookList) {
         this.context = context;
         this.bookList = bookList;
         }
 
-@SuppressLint("NotifyDataSetChanged")
-public void setMovieList(List<BookModel> bookList) {
+    @SuppressLint("NotifyDataSetChanged")
+    public void setMovieList(List<BookModel> bookList) {
         this.bookList = bookList;
         notifyDataSetChanged();
         }
 
-@NonNull
-@Override
-public CategoryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    @NonNull
+    @Override
+    public CategoryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_category, parent, false);
         return new CategoryAdapter.MyViewHolder(view);
         }
 
-@Override
-public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder holder, int position) {
+
+        @Override
+    public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder holder, int position) {
         holder.title.setText(this.bookList.get(position).getTitle().toString());
 
         Glide.with(context)
@@ -52,33 +53,33 @@ public void onBindViewHolder(@NonNull CategoryAdapter.MyViewHolder holder, int p
         .into(holder.imageView);
 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View v) {
 
-        Intent intent=new Intent(context, DetailActivity.class);
-        intent.putExtra("id", bookList.get(position).getId());
-        intent.putExtra("title", bookList.get(position).getTitle());
-        intent.putExtra("image", bookList.get(position).getImage());
-        intent.putExtra("content", bookList.get(position).getContent());
-        intent.putExtra("author", bookList.get(position).getAuthor());
-        intent.putExtra("category", bookList.get(position).getCategory());
-        intent.putExtra("popularity", bookList.get(position).isPopularity());
-        intent.putExtra("price", bookList.get(position).getPrice());
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-}
+            @Override
+    public void onClick(View v) {
+                Intent intent=new Intent(context, DetailActivity.class);
+                intent.putExtra("id", bookList.get(position).getId());
+                intent.putExtra("title", bookList.get(position).getTitle());
+                intent.putExtra("image", bookList.get(position).getImage());
+                intent.putExtra("content", bookList.get(position).getContent());
+                intent.putExtra("author", bookList.get(position).getAuthor());
+                intent.putExtra("category", bookList.get(position).getCategory());
+                intent.putExtra("popularity", bookList.get(position).isPopularity());
+                intent.putExtra("price", bookList.get(position).getPrice());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
         });
         }
 
-@Override
-public int getItemCount() {
+    @Override
+    public int getItemCount() {
         if(this.bookList != null) {
         return this.bookList.size();
         }
         return 0;
         }
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
     TextView title;
     ImageView imageView;
 

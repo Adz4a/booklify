@@ -10,15 +10,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.booklify.R;
-import com.example.booklify.model.BasketModel;
 import com.example.booklify.model.BookModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +23,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -36,7 +31,6 @@ public class DetailActivity extends AppCompatActivity {
     LinearLayout back;
     Button price;
 
-
     LottieAnimationView bookmark;
     private boolean btnBookmark = false;
 
@@ -44,7 +38,6 @@ public class DetailActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private BookModel bookModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +53,6 @@ public class DetailActivity extends AppCompatActivity {
         content = findViewById(R.id.content);
         price = findViewById(R.id.price);
 
-
-
         final boolean newObject = getIntent().getBooleanExtra("bookmark",false);
 
         bookmark = findViewById(R.id.lottie_bookmark);
@@ -75,12 +66,9 @@ public class DetailActivity extends AppCompatActivity {
                 if(btnBookmark){
                     return;
                 }
-
                 else if (newObject){
                     bookmark.cancelAnimation();
-
                 }
-
                 else{
                     bookmark.playAnimation();
                     BookmarkBook();
@@ -88,9 +76,6 @@ public class DetailActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
         Glide.with(this)
                 .load(getIntent().getStringExtra("image"))
@@ -113,20 +98,14 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-
         final Object object = getIntent().getSerializableExtra("detail");
         if(object instanceof BookModel){
             bookModel = (BookModel) object;
         }
 
-
-
-
         if(bookModel != null){
             Glide.with(getApplicationContext()).load(bookModel.getImage()).into(img);
         }
-
-
 
         back = (LinearLayout) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -136,24 +115,23 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void BookmarkBook() {
         final HashMap<String, Object> bookmarkMap = new HashMap<>();
-
-           bookmarkMap.put("id", getIntent().getStringExtra("id"));
-           bookmarkMap.put("title", getIntent().getStringExtra("title"));
-           bookmarkMap.put("image", getIntent().getStringExtra("image"));
-           bookmarkMap.put("content",  getIntent().getStringExtra("content"));
-           bookmarkMap.put("author",  getIntent().getIntExtra("author",0));
-           bookmarkMap.put("category",  getIntent().getIntExtra("category",0));
-           bookmarkMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
-           bookmarkMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
-           bookmarkMap.put("price", getIntent().getIntExtra("price",0));
+            bookmarkMap.put("id", getIntent().getStringExtra("id"));
+            bookmarkMap.put("title", getIntent().getStringExtra("title"));
+            bookmarkMap.put("image", getIntent().getStringExtra("image"));
+            bookmarkMap.put("content",  getIntent().getStringExtra("content"));
+            bookmarkMap.put("author",  getIntent().getIntExtra("author",0));
+            bookmarkMap.put("category",  getIntent().getIntExtra("category",0));
+            bookmarkMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
+            bookmarkMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
+            bookmarkMap.put("price", getIntent().getIntExtra("price",0));
 
         if(mAuth.getCurrentUser() != null) {
-            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("bookmark").add(bookmarkMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("bookmark")
+                    .add(bookmarkMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {
                     Toast.makeText(getApplicationContext(), "You may seen in bookmark", Toast.LENGTH_LONG).show();
@@ -164,7 +142,6 @@ public class DetailActivity extends AppCompatActivity {
 
     private void addBasket() {
         final HashMap<String, Object> basketMap = new HashMap<>();
-
         basketMap.put("id", getIntent().getStringExtra("id"));
         basketMap.put("title", getIntent().getStringExtra("title"));
         basketMap.put("image", getIntent().getStringExtra("image"));
@@ -176,7 +153,8 @@ public class DetailActivity extends AppCompatActivity {
         basketMap.put("price", getIntent().getIntExtra("price",0));
 
         if(mAuth.getCurrentUser() != null) {
-            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("cartShop").add(basketMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("cartShop")
+                    .add(basketMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {
                     Toast.makeText(getApplicationContext(), "You may seen in basket", Toast.LENGTH_LONG).show();

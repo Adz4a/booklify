@@ -54,7 +54,6 @@ public class ViewAllPopularAdapter extends RecyclerView.Adapter<ViewAllPopularAd
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(context, DetailActivity.class);
                 intent.putExtra("id", bookList.get(position).getId());
                 intent.putExtra("title", bookList.get(position).getTitle());
@@ -90,7 +89,6 @@ public class ViewAllPopularAdapter extends RecyclerView.Adapter<ViewAllPopularAd
             imageView = (ImageView) itemView.findViewById(R.id.image1);
         }
     }
-
 
     public void filterList(ArrayList<BookModel> filteredList) {
         bookList = filteredList;

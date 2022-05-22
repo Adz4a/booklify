@@ -6,9 +6,6 @@ public class UserModel {
     public String email;
     public String image;
 
-
-
-
     public UserModel(){};
 
     public UserModel(String username, String email) {

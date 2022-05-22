@@ -28,7 +28,4 @@ public class BookRepository {
         return bookApiClient.getBooks();
     }
 
-//    public void searchBookApi(int id){
-//        bookApiClient.searchBookApi(id);
-//    }
 }

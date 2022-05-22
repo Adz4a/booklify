@@ -15,17 +15,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booklify.R;
 import com.example.booklify.adapter.BasketAdapter;
-import com.example.booklify.adapter.BookmarkAdapter;
 import com.example.booklify.model.BasketModel;
-import com.example.booklify.model.BookModel;
-import com.example.booklify.model.BookmarkModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,7 +58,6 @@ public class BasketFragment extends Fragment {
 
         EditText editText = view.findViewById(R.id.filter);
 
-
         recyclerView = view.findViewById(R.id.basketRecycle);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -80,11 +74,6 @@ public class BasketFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-//                                if (task.getResult().getDocuments().isEmpty()) {
-//                                    isEmpty.setVisibility(View.VISIBLE);
-//                                }
-//                                else {
-//                                    isEmpty.setVisibility(View.INVISIBLE);
                                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
 
                                         bookId = documentSnapshot.getId();
@@ -115,7 +104,7 @@ public class BasketFragment extends Fragment {
                                                                 }
                                                             }
                                                         });
-                                            }
+                                             }
                                         });
                                     }
                             }
@@ -141,11 +130,7 @@ public class BasketFragment extends Fragment {
             }
         });
 
-
-
         return view;
-
-
     }
 
 
@@ -165,7 +150,6 @@ public class BasketFragment extends Fragment {
                 filteredList.add(item);
             }
         }
-
         basketAdapter.filterList(filteredList);
     }
 
