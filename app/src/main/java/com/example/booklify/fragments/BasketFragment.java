@@ -2,10 +2,13 @@ package com.example.booklify.fragments;
 
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,6 +60,8 @@ public class BasketFragment extends Fragment {
 
         summary = view.findViewById(R.id.summary);
         isEmpty = view.findViewById(R.id.isEmpty);
+
+        EditText editText = view.findViewById(R.id.filter);
 
 
         recyclerView = view.findViewById(R.id.basketRecycle);
@@ -112,31 +117,29 @@ public class BasketFragment extends Fragment {
                                                         });
                                             }
                                         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                }
+                                    }
                             }
                         }
                     });
         }
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                filter(s.toString());
+            }
+        });
 
 
 
@@ -152,6 +155,18 @@ public class BasketFragment extends Fragment {
             totalSum += model.getPrice();
         }
         summary.setText("Total Sum: " + totalSum + "$");
+    }
+
+    private void filter(String text) {
+        ArrayList<BasketModel> filteredList = new ArrayList<>();
+
+        for (BasketModel item : basketModels) {
+            if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        basketAdapter.filterList(filteredList);
     }
 
 

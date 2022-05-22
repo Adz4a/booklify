@@ -36,12 +36,12 @@
         "source": "C:\\OpenServer\\domains\\booklify\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\OpenServer\\domains\\booklify\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_bookmark_bg.xml.flat",
-        "source": "C:\\OpenServer\\domains\\booklify\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_bookmark_bg.xml"
-    },
-    {
         "merged": "C:\\OpenServer\\domains\\booklify\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_register.xml.flat",
         "source": "C:\\OpenServer\\domains\\booklify\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\OpenServer\\domains\\booklify\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_bookmark_bg.xml.flat",
+        "source": "C:\\OpenServer\\domains\\booklify\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_bookmark_bg.xml"
     },
     {
         "merged": "C:\\OpenServer\\domains\\booklify\\app\\build\\intermediates\\merged_res\\debug\\drawable_harry_potter.jpg.flat",

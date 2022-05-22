@@ -20,6 +20,7 @@ import com.example.booklify.activity.books.DetailActivity;
 import com.example.booklify.fragments.BasketFragment;
 import com.example.booklify.model.BasketModel;
 import com.example.booklify.model.BookModel;
+import com.example.booklify.model.BookmarkModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -102,30 +103,6 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.viewHolder
             }
         });
 
-//        holder.summary.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if(mAuth.getCurrentUser() != null) {
-//                    mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
-//                            .collection("cartShop")
-//                            .document(bookModelHolder.get(position).getDocumentId())
-//                            .delete()
-//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if (task.isSuccessful()) {
-//                                        bookModelHolder.remove(bookModelHolder);
-//                                        notifyDataSetChanged();
-//                                        Toast.makeText(context, "The buy was successful!", Toast.LENGTH_LONG).show();
-//                                    } else {
-//                                        Toast.makeText(context, "Error" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                    }
-//                                }
-//                            });
-//                }
-//            }
-//        });
-
     }
 
     @Override
@@ -148,6 +125,11 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.viewHolder
             delete=itemView.findViewById(R.id.deleteItem);
             summary = itemView.findViewById(R.id.summary);
         }
+    }
+
+    public void filterList(ArrayList<BasketModel> filteredList) {
+        bookModelHolder = filteredList;
+        notifyDataSetChanged();
     }
 
 

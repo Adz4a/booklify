@@ -104,7 +104,7 @@ public class DetailActivity extends AppCompatActivity {
 
         title.setText(getIntent().getStringExtra("title"));
         content.setText(getIntent().getStringExtra("content"));
-        price.setText(String.valueOf(getIntent().getIntExtra("price",0)));
+        price.setText(String.valueOf("Add to Basket \n" + getIntent().getIntExtra("price",0)) + "$");
 
         price.setOnClickListener(new View.OnClickListener() {
             @Override

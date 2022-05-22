@@ -28,7 +28,8 @@
             app:startIconDrawable="@drawable/ic_search"
             app:startIconTint="@color/green">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/filter"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.google.android.material.textfield.TextInputLayout>
