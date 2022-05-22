@@ -47,10 +47,6 @@ public class BookFragment extends Fragment{
     Map<String, Object> user;
     FirebaseFirestore db;
 
-    String value,idBook;
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -107,20 +103,6 @@ public class BookFragment extends Fragment{
                                 user.put("category", bookModel.getCategory());
                                 user.put("popularity" , bookModel.isPopularity());
                                 user.put("price",bookModel.getPrice());
-//                                db.collection("books")
-//                                        .add(user)
-//                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                                            @Override
-//                                            public void onSuccess(DocumentReference documentReference) {
-//                                                Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-//                                            }
-//                                        })
-//                                        .addOnFailureListener(new OnFailureListener() {
-//                                            @Override
-//                                            public void onFailure(@NonNull Exception e) {
-//                                                Log.w("TAG", "Error adding document", e);
-//                                            }
-//                                        });
                             }
 
                         }
@@ -138,12 +120,44 @@ public class BookFragment extends Fragment{
                                 BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
                                 bookModelHolder.add(viewAllModel);
                                 bookAdapter.notifyDataSetChanged();
-//                                progressBar.setVisibility(View.GONE);
                                 recyclerView.setVisibility(View.VISIBLE);
                             }
                         }
                     });
         }
+
+        //Romance
+        if(type != null && type.equalsIgnoreCase("2")){
+            db.collection("books").whereEqualTo("category","2")
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            for (DocumentSnapshot documentSnapshot:task.getResult().getDocuments()){
+                                BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
+                                bookModelHolder.add(viewAllModel);
+                                bookAdapter.notifyDataSetChanged();
+                                recyclerView.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+        }
+
+        //Adventure
+        if(type != null && type.equalsIgnoreCase("3")){
+            db.collection("books").whereEqualTo("category","3")
+                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            for (DocumentSnapshot documentSnapshot:task.getResult().getDocuments()){
+                                BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
+                                bookModelHolder.add(viewAllModel);
+                                bookAdapter.notifyDataSetChanged();
+                                recyclerView.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+        }
+
 
         //Classic
         if(type != null && type.equalsIgnoreCase("4")){
@@ -155,14 +169,13 @@ public class BookFragment extends Fragment{
                                 BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
                                 bookModelHolder.add(viewAllModel);
                                 bookAdapter.notifyDataSetChanged();
-//                                progressBar.setVisibility(View.GONE);
                                 recyclerView.setVisibility(View.VISIBLE);
                             }
                         }
                     });
         }
 
-        ///Historical Novel
+        //Historical Novel
         if(type != null && type.equalsIgnoreCase("5")){
             db.collection("books").whereEqualTo("category","5")
                     .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -172,22 +185,32 @@ public class BookFragment extends Fragment{
                                 BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
                                 bookModelHolder.add(viewAllModel);
                                 bookAdapter.notifyDataSetChanged();
-//                                progressBar.setVisibility(View.GONE);
                                 recyclerView.setVisibility(View.VISIBLE);
                             }
                         }
                     });
         }
 
+        //Historical Novel
+//        if(type != null && type.equalsIgnoreCase("5")){
+//            db.collection("books").whereEqualTo("category","5")
+//                    .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                            for (DocumentSnapshot documentSnapshot:task.getResult().getDocuments()){
+//                                BookModel viewAllModel = documentSnapshot.toObject(BookModel.class);
+//                                bookModelHolder.add(viewAllModel);
+//                                bookAdapter.notifyDataSetChanged();
+//                                recyclerView.setVisibility(View.VISIBLE);
+//                            }
+//                        }
+//                    });
+//        }
 
         viewModel.makeApiCall();
 
-
-
         return view;
     }
-
-
 
 
     private void filter(String text) {

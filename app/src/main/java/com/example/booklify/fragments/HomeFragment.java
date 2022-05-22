@@ -131,8 +131,42 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(),CategoryActivity.class);
-                intent.putExtra("fantasy",true);
+                intent.putExtra("romance",true);
                 intent.putExtra("category","Fantasy");
+                startActivity(intent);
+            }
+        });
+
+        Button romance = view.findViewById(R.id.romance);
+        romance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CategoryActivity.class);
+                intent.putExtra("romance",true);
+                intent.putExtra("category","Romance");
+                startActivity(intent);
+            }
+        });
+
+        Button adventure = view.findViewById(R.id.adventure);
+        adventure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CategoryActivity.class);
+                intent.putExtra("adventure",true);
+                intent.putExtra("category","Adventure");
+                startActivity(intent);
+            }
+        });
+
+
+        Button classic = view.findViewById(R.id.classic);
+        classic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),CategoryActivity.class);
+                intent.putExtra("classic",true);
+                intent.putExtra("category","Classic");
                 startActivity(intent);
             }
         });
@@ -148,36 +182,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button classic = view.findViewById(R.id.classic);
-        classic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(),CategoryActivity.class);
-                intent.putExtra("classic",true);
-                intent.putExtra("category","Classic");
-                startActivity(intent);
-            }
-        });
+
+
+
 
 
         return view;
     }
-
-//    public void onClick(@NonNull View view){
-//        switch (view.getId()){
-//            case R.id.fantasy:
-//                startActivity(new Intent(getContext(), BookmarkActivity.class));
-//                break;
-//            case R.id.history:
-//                startActivity(new Intent(getContext(), CategoryActivity.class));
-//                break;
-//            case R.id.classic:
-//                startActivity(new Intent(getContext(), CategoryActivity.class));
-//                break;
-//        }
-//    }
-
-
 
     private void getUsername() {
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -204,9 +215,6 @@ public class HomeFragment extends Fragment {
         });
 
     }
-
-
-
 
 }
 

@@ -33,7 +33,7 @@ public class CategoryActivity extends AppCompatActivity {
     BookListViewModel viewModel;
 
     CategoryAdapter categoryAdapter;
-    boolean fantasy,history,classic;
+    boolean fantasy,history,classic, adventure,romance;
     TextView category;
 
     @Override
@@ -54,6 +54,8 @@ public class CategoryActivity extends AppCompatActivity {
         fantasy = getIntent().getBooleanExtra("fantasy",false);
         history = getIntent().getBooleanExtra("history",false);
         classic = getIntent().getBooleanExtra("classic",false);
+        adventure = getIntent().getBooleanExtra("adventure",false);
+        romance = getIntent().getBooleanExtra("romance",false);
 
         if (fantasy){
             category.setText(getIntent().getStringExtra("category"));
@@ -66,6 +68,14 @@ public class CategoryActivity extends AppCompatActivity {
         if (classic){
             category.setText(getIntent().getStringExtra("category"));
             getClassic();
+        }
+        if(adventure){
+            category.setText(getIntent().getStringExtra("category"));
+            getAdventure();
+        }
+        if(romance){
+            category.setText(getIntent().getStringExtra("category"));
+            getRomance();
         }
 
 
@@ -80,25 +90,6 @@ public class CategoryActivity extends AppCompatActivity {
         categoryAdapter = new CategoryAdapter(getApplicationContext(), bookModelHolder);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-//        viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
-//        viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
-//            @Override
-//            public void onChanged(BookResponse bookResponse) {
-//                if(bookResponse != null) {
-//                    bookModelHolder = bookResponse.getBooks();
-//                    bookModelList = new ArrayList<>();
-//                    for (BookModel bookModel: bookModelHolder){
-//                        if (bookModel.getCategory() == 4){
-//                            bookModelList.add(bookModel);
-//                        }
-//                    }
-//
-//                    categoryAdapter.setMovieList(bookModelList);
-//                    recyclerView.setAdapter(categoryAdapter);
-//
-//                }
-//            }
-//        });
 
 
 
@@ -125,17 +116,61 @@ public class CategoryActivity extends AppCompatActivity {
 
 
 
-    private void getHistory() {
+    private void getFantasy() {
         viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
         viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
             @Override
             public void onChanged(BookResponse bookResponse) {
                 if(bookResponse != null) {
                     bookModelHolder = bookResponse.getBooks();
-                    categoryModel = new ArrayList<BookModel>();
-                    for (BookModel categoryModels: bookModelHolder){
-                        if (categoryModels.getCategory() == 5){
-                            categoryModel.add(categoryModels);
+                    categoryModel = new ArrayList<>();
+                    for (BookModel bookModel: bookModelHolder){
+                        if (bookModel.getCategory() == 1){
+                            categoryModel.add(bookModel);
+                        }
+                    }
+
+                    categoryAdapter.setMovieList(categoryModel);
+                    recyclerView.setAdapter(categoryAdapter);
+
+                }
+            }
+        });
+    }
+
+    private void getRomance() {
+        viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
+        viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
+            @Override
+            public void onChanged(BookResponse bookResponse) {
+                if (bookResponse != null) {
+                    bookModelHolder = bookResponse.getBooks();
+                    categoryModel = new ArrayList<>();
+                    for (BookModel bookModel : bookModelHolder) {
+                        if (bookModel.getCategory() == 2) {
+                            categoryModel.add(bookModel);
+                        }
+                    }
+
+                    categoryAdapter.setMovieList(categoryModel);
+                    recyclerView.setAdapter(categoryAdapter);
+
+                }
+            }
+        });
+    }
+
+    private void getAdventure() {
+        viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
+        viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
+            @Override
+            public void onChanged(BookResponse bookResponse) {
+                if(bookResponse != null) {
+                    bookModelHolder = bookResponse.getBooks();
+                    categoryModel = new ArrayList<>();
+                    for (BookModel bookModel: bookModelHolder){
+                        if (bookModel.getCategory() == 3){
+                            categoryModel.add(bookModel);
                         }
                     }
 
@@ -169,17 +204,17 @@ public class CategoryActivity extends AppCompatActivity {
         });
     }
 
-    private void getFantasy() {
+    private void getHistory() {
         viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
         viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
             @Override
             public void onChanged(BookResponse bookResponse) {
                 if(bookResponse != null) {
                     bookModelHolder = bookResponse.getBooks();
-                    categoryModel = new ArrayList<>();
-                    for (BookModel bookModel: bookModelHolder){
-                        if (bookModel.getCategory() == 1){
-                            categoryModel.add(bookModel);
+                    categoryModel = new ArrayList<BookModel>();
+                    for (BookModel categoryModels: bookModelHolder){
+                        if (categoryModels.getCategory() == 5){
+                            categoryModel.add(categoryModels);
                         }
                     }
 
@@ -189,9 +224,7 @@ public class CategoryActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
-
 
     private void filter(String text) {
         ArrayList<BookModel> filteredList = new ArrayList<>();
