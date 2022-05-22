@@ -1003,6 +1003,19 @@ int attr springMass 0x7f0303a1
 int attr springStiffness 0x7f0303a2
 int attr springStopThreshold 0x7f0303a3
 int attr srcCompat 0x7f0303a4
+int attr stColorBackground 0x7f030490
+int attr stFont 0x7f030491
+int attr stGravity 0x7f030492
+int attr stIconEnd 0x7f030493
+int attr stIconStart 0x7f030494
+int attr stLength 0x7f030495
+int attr stRadius 0x7f030496
+int attr stSolidBackground 0x7f030497
+int attr stStrokeColor 0x7f030498
+int attr stStrokeWidth 0x7f030499
+int attr stTextBold 0x7f03049a
+int attr stTextColor 0x7f03049b
+int attr stTextSize 0x7f03049c
 int attr stackFromEnd 0x7f0303a5
 int attr staggered 0x7f0303a6
 int attr startDestination 0x7f0303a7
@@ -1303,6 +1316,8 @@ int color common_google_signin_btn_text_light_disabled 0x7f05003a
 int color common_google_signin_btn_text_light_focused 0x7f05003b
 int color common_google_signin_btn_text_light_pressed 0x7f05003c
 int color common_google_signin_btn_tint 0x7f05003d
+int color default_background_color 0x7f05026e
+int color default_text_color 0x7f05026f
 int color design_bottom_navigation_shadow_color 0x7f05003e
 int color design_box_stroke_color 0x7f05003f
 int color design_dark_default_color_background 0x7f050040
@@ -1962,7 +1977,9 @@ int dimen compat_control_corner_material 0x7f06005f
 int dimen compat_notification_large_icon_max_height 0x7f060060
 int dimen compat_notification_large_icon_max_width 0x7f060061
 int dimen def_drawer_elevation 0x7f060062
+int dimen default_corner_radius 0x7f060255
 int dimen default_dimension 0x7f060063
+int dimen default_text_size 0x7f060256
 int dimen design_appbar_elevation 0x7f060064
 int dimen design_bottom_navigation_active_item_max_width 0x7f060065
 int dimen design_bottom_navigation_active_item_min_width 0x7f060066
@@ -2013,6 +2030,7 @@ int dimen design_tab_text_size_2line 0x7f060092
 int dimen design_textinput_caption_translate_y 0x7f060093
 int dimen disabled_alpha_material_dark 0x7f060094
 int dimen disabled_alpha_material_light 0x7f060095
+int dimen drawable_padding 0x7f060257
 int dimen fastscroll_default_thickness 0x7f060096
 int dimen fastscroll_margin 0x7f060097
 int dimen fastscroll_minimum_range 0x7f060098
@@ -2023,6 +2041,7 @@ int dimen hint_alpha_material_dark 0x7f06009c
 int dimen hint_alpha_material_light 0x7f06009d
 int dimen hint_pressed_alpha_material_dark 0x7f06009e
 int dimen hint_pressed_alpha_material_light 0x7f06009f
+int dimen icon_size 0x7f060258
 int dimen item_touch_helper_max_drag_scroll_per_frame 0x7f0600a0
 int dimen item_touch_helper_swipe_escape_max_velocity 0x7f0600a1
 int dimen item_touch_helper_swipe_escape_velocity 0x7f0600a2
@@ -2452,6 +2471,10 @@ int dimen test_navigation_bar_item_min_width 0x7f060249
 int dimen test_navigation_bar_label_padding 0x7f06024a
 int dimen test_navigation_bar_shadow_height 0x7f06024b
 int dimen test_navigation_bar_text_size 0x7f06024c
+int dimen toast_horizontal_padding 0x7f060259
+int dimen toast_horizontal_padding_empty_side 0x7f06025a
+int dimen toast_horizontal_padding_icon_side 0x7f06025b
+int dimen toast_vertical_padding 0x7f06025c
 int dimen tooltip_corner_radius 0x7f06024d
 int dimen tooltip_horizontal_padding 0x7f06024e
 int dimen tooltip_margin 0x7f06024f
@@ -2655,6 +2678,7 @@ int drawable notify_panel_notification_icon_bg 0x7f0700c2
 int drawable rounded_button 0x7f0700c3
 int drawable rounded_img 0x7f0700c4
 int drawable shadow 0x7f0700c5
+int drawable shape_toast 0x7f0700d0
 int drawable sherlock 0x7f0700c6
 int drawable team_logo 0x7f0700c7
 int drawable test_custom_background 0x7f0700c8
@@ -2666,9 +2690,11 @@ int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
 int id CTRL 0x7f080003
 int id FUNCTION 0x7f080004
+int id LONG 0x7f080240
 int id META 0x7f080005
 int id NO_DEBUG 0x7f080006
 int id SHIFT 0x7f080007
+int id SHORT 0x7f080241
 int id SHOW_ALL 0x7f080008
 int id SHOW_PATH 0x7f080009
 int id SHOW_PROGRESS 0x7f08000a
@@ -2834,6 +2860,7 @@ int id decelerateAndComplete 0x7f0800a8
 int id decor_content_parent 0x7f0800a9
 int id default_activity_button 0x7f0800aa
 int id delete 0x7f0800ab
+int id deleteItem 0x7f08023f
 int id deltaRelative 0x7f0800ac
 int id dependency_ordering 0x7f0800ad
 int id design_bottom_sheet 0x7f0800ae
@@ -3191,6 +3218,7 @@ int id textinput_helper_text 0x7f08020e
 int id textinput_placeholder 0x7f08020f
 int id textinput_prefix_text 0x7f080210
 int id textinput_suffix_text 0x7f080211
+int id textview 0x7f080242
 int id time 0x7f080212
 int id title 0x7f080213
 int id title1 0x7f080214
@@ -3240,8 +3268,10 @@ int integer bottom_sheet_slide_duration 0x7f090003
 int integer cancel_button_image_alpha 0x7f090004
 int integer config_navAnimTime 0x7f090005
 int integer config_tooltipAnimTime 0x7f090006
+int integer defaultBackgroundAlpha 0x7f090037
 int integer design_snackbar_text_max_lines 0x7f090007
 int integer design_tab_indicator_anim_duration_ms 0x7f090008
+int integer fullBackgroundAlpha 0x7f090038
 int integer google_play_services_version 0x7f090009
 int integer hide_password_duration 0x7f09000a
 int integer m3_btn_anim_delay_ms 0x7f09000b
@@ -3432,6 +3462,7 @@ int layout row_view_popular 0x7f0b0082
 int layout select_dialog_item_material 0x7f0b0083
 int layout select_dialog_multichoice_material 0x7f0b0084
 int layout select_dialog_singlechoice_material 0x7f0b0085
+int layout styleable_layout 0x7f0b0097
 int layout support_simple_spinner_dropdown_item 0x7f0b0086
 int layout test_action_chip 0x7f0b0087
 int layout test_chip_zero_corner_radius 0x7f0b0088
@@ -6475,6 +6506,20 @@ int[] styleable StateListDrawableItem { 0x01010199 }
 int styleable StateListDrawableItem_android_drawable 0
 int[] styleable StateSet { 0x7f03014c }
 int styleable StateSet_defaultState 0
+int[] styleable StyleableToast { 0x7f030490, 0x7f030491, 0x7f030492, 0x7f030493, 0x7f030494, 0x7f030495, 0x7f030496, 0x7f030497, 0x7f030498, 0x7f030499, 0x7f03049a, 0x7f03049b, 0x7f03049c }
+int styleable StyleableToast_stColorBackground 0
+int styleable StyleableToast_stFont 1
+int styleable StyleableToast_stGravity 2
+int styleable StyleableToast_stIconEnd 3
+int styleable StyleableToast_stIconStart 4
+int styleable StyleableToast_stLength 5
+int styleable StyleableToast_stRadius 6
+int styleable StyleableToast_stSolidBackground 7
+int styleable StyleableToast_stStrokeColor 8
+int styleable StyleableToast_stStrokeWidth 9
+int styleable StyleableToast_stTextBold 10
+int styleable StyleableToast_stTextColor 11
+int styleable StyleableToast_stTextSize 12
 int[] styleable SwitchCompat { 0x01010124, 0x01010125, 0x01010142, 0x7f030389, 0x7f03039e, 0x7f0303c7, 0x7f0303c8, 0x7f0303ca, 0x7f030435, 0x7f030436, 0x7f030437, 0x7f03045b, 0x7f030462, 0x7f030463 }
 int styleable SwitchCompat_android_textOn 0
 int styleable SwitchCompat_android_textOff 1

@@ -1004,6 +1004,19 @@ attr springMass
 attr springStiffness
 attr springStopThreshold
 attr srcCompat
+attr stColorBackground
+attr stFont
+attr stGravity
+attr stIconEnd
+attr stIconStart
+attr stLength
+attr stRadius
+attr stSolidBackground
+attr stStrokeColor
+attr stStrokeWidth
+attr stTextBold
+attr stTextColor
+attr stTextSize
 attr stackFromEnd
 attr staggered
 attr startDestination
@@ -1304,6 +1317,8 @@ color common_google_signin_btn_text_light_disabled
 color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
+color default_background_color
+color default_text_color
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -1963,7 +1978,9 @@ dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
 dimen def_drawer_elevation
+dimen default_corner_radius
 dimen default_dimension
+dimen default_text_size
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_item_min_width
@@ -2014,6 +2031,7 @@ dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen drawable_padding
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -2024,6 +2042,7 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen icon_size
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
@@ -2453,6 +2472,10 @@ dimen test_navigation_bar_item_min_width
 dimen test_navigation_bar_label_padding
 dimen test_navigation_bar_shadow_height
 dimen test_navigation_bar_text_size
+dimen toast_horizontal_padding
+dimen toast_horizontal_padding_empty_side
+dimen toast_horizontal_padding_icon_side
+dimen toast_vertical_padding
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -2656,6 +2679,7 @@ drawable notify_panel_notification_icon_bg
 drawable rounded_button
 drawable rounded_img
 drawable shadow
+drawable shape_toast
 drawable sherlock
 drawable team_logo
 drawable test_custom_background
@@ -2667,9 +2691,11 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id LONG
 id META
 id NO_DEBUG
 id SHIFT
+id SHORT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
@@ -2835,6 +2861,7 @@ id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
 id delete
+id deleteItem
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -3192,6 +3219,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id textview
 id time
 id title
 id title1
@@ -3241,8 +3269,10 @@ integer bottom_sheet_slide_duration
 integer cancel_button_image_alpha
 integer config_navAnimTime
 integer config_tooltipAnimTime
+integer defaultBackgroundAlpha
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
+integer fullBackgroundAlpha
 integer google_play_services_version
 integer hide_password_duration
 integer m3_btn_anim_delay_ms
@@ -3433,6 +3463,7 @@ layout row_view_popular
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout styleable_layout
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -4826,6 +4857,7 @@ styleable State android_id constraints
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
 styleable StateSet defaultState
+styleable StyleableToast stColorBackground stFont stGravity stIconEnd stIconStart stLength stRadius stSolidBackground stStrokeColor stStrokeWidth stTextBold stTextColor stTextSize
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text

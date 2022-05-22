@@ -64,7 +64,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 intent.putExtra("author", bookList.get(position).getAuthor());
                 intent.putExtra("category", bookList.get(position).getCategory());
                 intent.putExtra("popularity", bookList.get(position).isPopularity());
-                intent.putExtra("price", String.valueOf(bookList.get(position).getPrice()) + "$");
+                intent.putExtra("price", bookList.get(position).getPrice());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

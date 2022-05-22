@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +28,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -34,7 +37,6 @@ import java.util.List;
 public class BasketFragment extends Fragment {
 
     RecyclerView recyclerView;
-    ArrayList<BookModel> bookModelHolder;
     List<BasketModel> basketModels;
     BasketAdapter basketAdapter;
     private String bookId;
@@ -43,6 +45,7 @@ public class BasketFragment extends Fragment {
     private FirebaseAuth mAuth;
 
     Button summary;
+    TextView isEmpty;
 
     @Nullable
     @Override
@@ -53,6 +56,7 @@ public class BasketFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         summary = view.findViewById(R.id.summary);
+        isEmpty = view.findViewById(R.id.isEmpty);
 
 
         recyclerView = view.findViewById(R.id.basketRecycle);
@@ -83,10 +87,51 @@ public class BasketFragment extends Fragment {
                                         basketModel.setDocumentId(bookId);
                                         basketModels.add(basketModel);
                                         basketAdapter.notifyDataSetChanged();
-
+                                        summary.setVisibility(View.VISIBLE);
                                         calculateSumList(basketModels);
+                                        isEmpty.setVisibility(View.GONE);
 
-//                                    }
+
+                                        summary.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                                                        .collection("cartShop")
+                                                        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                                        mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
+                                                                                .collection("cartShop").document(document.getId()).delete();
+                                                                        Toast.makeText(getContext(), "The buy was successfully!", Toast.LENGTH_LONG).show();
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        });
+                                            }
+                                        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 }
                             }
                         }
@@ -102,11 +147,11 @@ public class BasketFragment extends Fragment {
 
 
     public void calculateSumList(List<BasketModel> list) {
-        double totalSum = 0.0;
+        int totalSum = 0;
         for(BasketModel model: list){
-            totalSum += model.getTotalPrice();
+            totalSum += model.getPrice();
         }
-        summary.setText("Total Sum: " + totalSum);
+        summary.setText("Total Sum: " + totalSum + "$");
     }
 
 

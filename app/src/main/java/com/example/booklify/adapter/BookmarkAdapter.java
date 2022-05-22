@@ -70,7 +70,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.viewHo
                 intent.putExtra("category", bookModelHolder.get(position).getCategory());
                 intent.putExtra("popularity", bookModelHolder.get(position).isPopularity());
                 intent.putExtra("bookmark", bookModelHolder.get(position).isBookmark());
-                intent.putExtra("price", String.valueOf(bookModelHolder.get(position).getPrice()) + "$");
+                intent.putExtra("price", bookModelHolder.get(position).getPrice());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

@@ -114,6 +114,7 @@ public class BookmarkActivity extends AppCompatActivity {
                                         bookmarkAdapter.notifyDataSetChanged();
 
 
+
                                     }
                                 }
                             }

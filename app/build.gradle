@@ -68,6 +68,8 @@ dependencies {
 
     implementation 'com.github.Mahfa:DayNightSwitch:1.5'
 
+    implementation 'io.github.muddz:styleabletoast:2.4.0'
+
 
 
 }

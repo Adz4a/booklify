@@ -23,6 +23,7 @@ MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\marat\D
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\b95cd9b6b93572495214fa6c6c40976e\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\24a705431a055f0ad86bf49834344983\transformed\constraintlayout-2.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [com.airbnb.android:lottie:3.7.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\d6c4bcb0bacf6c5d28f41cf88e8e14b2\transformed\jetified-lottie-3.7.0\AndroidManifest.xml:2:1-11:12
+MERGED from [io.github.muddz:styleabletoast:2.4.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\173d52d7824ab98c4b4d4109f879de42\transformed\jetified-styleabletoast-2.4.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\a3ee10fa9342490671242f786d97a08b\transformed\appcompat-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-database:20.0.5] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\9db05b74fc0e9130bf696fbd955599df\transformed\jetified-firebase-database-20.0.5\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-storage:20.0.1] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\4bb1f16f60d32931e7dc3bda17ab1b1d\transformed\jetified-firebase-storage-20.0.1\AndroidManifest.xml:15:1-39:12
@@ -346,6 +347,8 @@ MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\marat\Do
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\24a705431a055f0ad86bf49834344983\transformed\constraintlayout-2.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [com.airbnb.android:lottie:3.7.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\d6c4bcb0bacf6c5d28f41cf88e8e14b2\transformed\jetified-lottie-3.7.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.airbnb.android:lottie:3.7.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\d6c4bcb0bacf6c5d28f41cf88e8e14b2\transformed\jetified-lottie-3.7.0\AndroidManifest.xml:5:5-7:41
+MERGED from [io.github.muddz:styleabletoast:2.4.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\173d52d7824ab98c4b4d4109f879de42\transformed\jetified-styleabletoast-2.4.0\AndroidManifest.xml:5:5-7:41
+MERGED from [io.github.muddz:styleabletoast:2.4.0] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\173d52d7824ab98c4b4d4109f879de42\transformed\jetified-styleabletoast-2.4.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\a3ee10fa9342490671242f786d97a08b\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\a3ee10fa9342490671242f786d97a08b\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-database:20.0.5] C:\Users\marat\Downloads\gradle-3.0\caches\transforms-3\9db05b74fc0e9130bf696fbd955599df\transformed\jetified-firebase-database-20.0.5\AndroidManifest.xml:19:5-21:41

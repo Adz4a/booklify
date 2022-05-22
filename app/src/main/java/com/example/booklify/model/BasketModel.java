@@ -7,15 +7,7 @@ public class BasketModel {
     int price;
     String title,library,content,id;
     boolean popularity;
-    int totalPrice;
 
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
 
     public boolean isBookmark() {
         return true;

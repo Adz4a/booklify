@@ -104,7 +104,7 @@ public class DetailActivity extends AppCompatActivity {
 
         title.setText(getIntent().getStringExtra("title"));
         content.setText(getIntent().getStringExtra("content"));
-        price.setText(getIntent().getIntExtra("price",0));
+        price.setText(String.valueOf(getIntent().getIntExtra("price",0)));
 
         price.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,20 +163,20 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void addBasket() {
-        final HashMap<String, Object> bookmarkMap = new HashMap<>();
+        final HashMap<String, Object> basketMap = new HashMap<>();
 
-        bookmarkMap.put("id", getIntent().getStringExtra("id"));
-        bookmarkMap.put("title", getIntent().getStringExtra("title"));
-        bookmarkMap.put("image", getIntent().getStringExtra("image"));
-        bookmarkMap.put("content",  getIntent().getStringExtra("content"));
-        bookmarkMap.put("author",  getIntent().getIntExtra("author",0));
-        bookmarkMap.put("category",  getIntent().getIntExtra("category",0));
-        bookmarkMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
-        bookmarkMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
-        bookmarkMap.put("price", getIntent().getIntExtra("price",0));
+        basketMap.put("id", getIntent().getStringExtra("id"));
+        basketMap.put("title", getIntent().getStringExtra("title"));
+        basketMap.put("image", getIntent().getStringExtra("image"));
+        basketMap.put("content",  getIntent().getStringExtra("content"));
+        basketMap.put("author",  getIntent().getIntExtra("author",0));
+        basketMap.put("category",  getIntent().getIntExtra("category",0));
+        basketMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
+        basketMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
+        basketMap.put("price", getIntent().getIntExtra("price",0));
 
         if(mAuth.getCurrentUser() != null) {
-            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("cartShop").add(bookmarkMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("cartShop").add(basketMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {
                     Toast.makeText(getApplicationContext(), "You may seen in basket", Toast.LENGTH_LONG).show();

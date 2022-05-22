@@ -106,6 +106,7 @@ public class BookFragment extends Fragment{
                                 user.put("author", bookModel.getAuthor());
                                 user.put("category", bookModel.getCategory());
                                 user.put("popularity" , bookModel.isPopularity());
+                                user.put("price",bookModel.getPrice());
 //                                db.collection("books")
 //                                        .add(user)
 //                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
