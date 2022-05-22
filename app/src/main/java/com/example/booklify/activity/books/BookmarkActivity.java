@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.example.booklify.R;
 import com.example.booklify.adapter.BookmarkAdapter;
 import com.example.booklify.model.BookmarkModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -39,6 +41,7 @@ public class BookmarkActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String bookId;
     private ProgressBar progressBar;
+    private TextView isEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class BookmarkActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         progressBar = findViewById(R.id.progressBar);
+        isEmpty = findViewById(R.id.isEmpty);
 
         EditText editText = findViewById(R.id.filter);
 
@@ -87,28 +91,36 @@ public class BookmarkActivity extends AppCompatActivity {
         bookmarkAdapter = new BookmarkAdapter(bookmarkModel,this );
         recyclerView.setAdapter(bookmarkAdapter);
 
+
+
         if(mAuth.getCurrentUser() != null) {
+
             mDb.collection("CurrentUser").document(mAuth.getCurrentUser().getUid())
                     .collection("bookmark").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
+                                if (task.getResult().getDocuments().isEmpty()) {
+                                    isEmpty.setVisibility(View.VISIBLE);
+                                }
+                                else {
+                                    isEmpty.setVisibility(View.INVISIBLE);
+                                    for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
 
-                                    bookId = documentSnapshot.getId();
+                                        bookId = documentSnapshot.getId();
+                                        BookmarkModel bookmarkModels = documentSnapshot.toObject(BookmarkModel.class);
+                                        bookmarkModels.setDocumentId(bookId);
+                                        bookmarkModel.add(bookmarkModels);
+                                        bookmarkAdapter.notifyDataSetChanged();
 
-                                    BookmarkModel bookmarkModels = documentSnapshot.toObject(BookmarkModel.class);
 
-                                    bookmarkModels.setDocumentId(bookId);
-
-                                    bookmarkModel.add(bookmarkModels);
-                                    bookmarkAdapter.notifyDataSetChanged();
-                                    progressBar.setVisibility(View.GONE);
+                                    }
                                 }
                             }
                         }
                     });
         }
+
 
     }
 

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:configChanges="uiMode">
+
 
 
     <ImageView
@@ -38,6 +40,13 @@
                 android:onClick="onClick"
                 android:padding="7dp"
                 android:src="@drawable/ic_edit" />
+
+            <com.mahfa.dnswitch.DayNightSwitch
+                android:id="@+id/day_night_switch"
+                android:layout_width="76dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="30dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -200,7 +209,6 @@
 
 
     </RelativeLayout>
-
 
 
 

@@ -2571,6 +2571,7 @@ int drawable common_google_signin_btn_text_light 0x7f070072
 int drawable common_google_signin_btn_text_light_focused 0x7f070073
 int drawable common_google_signin_btn_text_light_normal 0x7f070074
 int drawable common_google_signin_btn_text_light_normal_background 0x7f070075
+int drawable dark_background 0x7f0700cc
 int drawable design_fab_background 0x7f070076
 int drawable design_ic_visibility 0x7f070077
 int drawable design_ic_visibility_off 0x7f070078
@@ -2606,6 +2607,9 @@ int drawable ic_receipt 0x7f070095
 int drawable ic_remove 0x7f070096
 int drawable ic_search 0x7f070097
 int drawable ic_star 0x7f070098
+int drawable img_clouds 0x7f0700cd
+int drawable img_moon 0x7f0700ce
+int drawable img_sun 0x7f0700cf
 int drawable logo 0x7f070099
 int drawable m3_appbar_background 0x7f07009a
 int drawable m3_popupmenu_background_overlay 0x7f07009b
@@ -2824,6 +2828,7 @@ int id customPanel 0x7f0800a3
 int id cut 0x7f0800a4
 int id dark 0x7f0800a5
 int id date_picker_actions 0x7f0800a6
+int id day_night_switch 0x7f08023d
 int id decelerate 0x7f0800a7
 int id decelerateAndComplete 0x7f0800a8
 int id decor_content_parent 0x7f0800a9
@@ -2927,6 +2932,7 @@ int id included 0x7f08010a
 int id info 0x7f08010b
 int id invisible 0x7f08010c
 int id inward 0x7f08010d
+int id isEmpty 0x7f08023c
 int id italic 0x7f08010e
 int id item1 0x7f08010f
 int id item2 0x7f080110
@@ -3108,7 +3114,6 @@ int id selected 0x7f0801bf
 int id selection_type 0x7f0801c0
 int id sharedValueSet 0x7f0801c1
 int id sharedValueUnset 0x7f0801c2
-int id shopRecycle 0x7f0801c3
 int id shortcut 0x7f0801c4
 int id showCustom 0x7f0801c5
 int id showHome 0x7f0801c6
@@ -3424,7 +3429,6 @@ int layout row_books 0x7f0b007d
 int layout row_category 0x7f0b007e
 int layout row_popular 0x7f0b007f
 int layout row_recommendations 0x7f0b0080
-int layout row_shop 0x7f0b0081
 int layout row_view_popular 0x7f0b0082
 int layout select_dialog_item_material 0x7f0b0083
 int layout select_dialog_multichoice_material 0x7f0b0084

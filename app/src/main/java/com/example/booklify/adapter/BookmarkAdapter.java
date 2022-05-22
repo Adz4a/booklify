@@ -56,6 +56,7 @@ public class BookmarkAdapter extends RecyclerView.Adapter<BookmarkAdapter.viewHo
                 .load(this.bookModelHolder.get(position).getImage())
                 .into(holder.img);
         holder.title.setText(bookModelHolder.get(position).getTitle());
+
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

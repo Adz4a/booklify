@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.resetPassword:
-                startActivity(new Intent(this, ResetPasswordActivity.class));
+                startActivity(new Intent(this, HomeActivity.class));
                 break;
             case R.id.login:
                 userLogin();

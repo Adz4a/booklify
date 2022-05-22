@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\marat\\AndroidStudioProjects\\Booklify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
+            "outputFile": "C:\\OpenServer\\domains\\booklify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
             "map": [
                 {
                     "source": "C:\\Users\\marat\\Downloads\\gradle-3.0\\caches\\transforms-3\\bee9d223f5a1987bf8a60e5fd99ad903\\transformed\\jetified-play-services-basement-18.0.0\\res\\values-nb\\values.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\marat\\AndroidStudioProjects\\Booklify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
+            "outputFile": "C:\\OpenServer\\domains\\booklify\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mk\\values-mk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\marat\\Downloads\\gradle-3.0\\caches\\transforms-3\\4a7899bff14ebe94e2bd91379ccfd8be\\transformed\\navigation-ui-2.4.2\\res\\values-mk\\values-mk.xml",

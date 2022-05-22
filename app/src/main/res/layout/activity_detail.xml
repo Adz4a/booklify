@@ -115,15 +115,19 @@
             android:textAlignment="center"
             android:textColor="@color/black"/>
 
+        <Button
+            android:id="@+id/summary"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:text="$3.34"
+            android:textColor="@color/white"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shopRecycle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="25dp"
-            tools:listitem="@layout/row_shop"
-            tools:itemCount="2"
-            android:gravity="center"/>
+
     </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -29,8 +29,7 @@ import java.util.HashMap;
 public class DetailActivity extends AppCompatActivity {
 
     ImageView img, img_bg;
-    TextView title, library, price, content;
-    RecyclerView recyclerView;
+    TextView title, price, content;
     LinearLayout back;
 
     LottieAnimationView bookmark;
@@ -85,7 +84,6 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-//        library = findViewById(R.id.library);
 //        price = findViewById(R.id.price);
 
 
@@ -102,7 +100,7 @@ public class DetailActivity extends AppCompatActivity {
         title.setText(getIntent().getStringExtra("title"));
         content.setText(getIntent().getStringExtra("content"));
 //        price.setText(getIntent().getStringExtra("price"));
-//        library.setText(getIntent().getStringExtra("library"));
+
 
         final Object object = getIntent().getSerializableExtra("detail");
         if(object instanceof BookModel){
@@ -117,9 +115,6 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-        recyclerView = findViewById(R.id.shopRecycle);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         back = (LinearLayout) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +137,7 @@ public class DetailActivity extends AppCompatActivity {
            bookmarkMap.put("author",  getIntent().getIntExtra("author",0));
            bookmarkMap.put("category",  getIntent().getIntExtra("category",0));
            bookmarkMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
+           bookmarkMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
 
         if(mAuth.getCurrentUser() != null) {
             mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("bookmark").add(bookmarkMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
