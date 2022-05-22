@@ -2947,7 +2947,6 @@ id layout
 id left
 id leftToRight
 id legacy
-id library
 id light
 id line1
 id line3

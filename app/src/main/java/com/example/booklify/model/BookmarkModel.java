@@ -5,7 +5,7 @@ public class BookmarkModel {
     int author;
     int category;
     private String image;
-    double price;
+    int price;
     String title,library,content,id;
     boolean popularity;
 
@@ -25,7 +25,7 @@ public class BookmarkModel {
         return title;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

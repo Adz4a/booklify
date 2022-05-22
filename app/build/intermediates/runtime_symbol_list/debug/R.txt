@@ -2946,7 +2946,6 @@ int id layout 0x7f080117
 int id left 0x7f080118
 int id leftToRight 0x7f080119
 int id legacy 0x7f08011a
-int id library 0x7f08011b
 int id light 0x7f08011c
 int id line1 0x7f08011d
 int id line3 0x7f08011e

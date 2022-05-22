@@ -11,18 +11,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.booklify.R;
 import com.example.booklify.activity.books.DetailActivity;
+import com.example.booklify.fragments.BasketFragment;
+import com.example.booklify.model.BasketModel;
 import com.example.booklify.model.BookModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.viewHolder> {
 
-    ArrayList<BookModel> bookModelHolder;
+    List<BasketModel> bookModelHolder;
     Context context;
 
-    public BasketAdapter(ArrayList<BookModel> bookModelHolder, Context context) {
+    public BasketAdapter(List<BasketModel> bookModelHolder, Context context) {
         this.bookModelHolder = bookModelHolder;
         this.context = context;
 
@@ -38,10 +42,12 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.viewHolder
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-//        holder.img.setImageResource(bookModelHolder.get(position).getImage());
-//        holder.price.setText((int) bookHolder.get(position).getPrice());
+
         holder.title.setText(bookModelHolder.get(position).getTitle());
-        holder.library.setText(bookModelHolder.get(position).getLibrary());
+        holder.price.setText(String.valueOf(bookModelHolder.get(position).getTotalPrice()) + "$");
+        Glide.with(context)
+                .load(this.bookModelHolder.get(position).getImage())
+                .into(holder.img);
 
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +57,12 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.viewHolder
                 intent.putExtra("id", bookModelHolder.get(position).getId());
                 intent.putExtra("title", bookModelHolder.get(position).getTitle());
                 intent.putExtra("image", bookModelHolder.get(position).getImage());
-//                intent.putExtra("price",bookHolder.get(position).getPrice());
                 intent.putExtra("content", bookModelHolder.get(position).getContent());
                 intent.putExtra("author", bookModelHolder.get(position).getAuthor());
                 intent.putExtra("category", bookModelHolder.get(position).getCategory());
                 intent.putExtra("popularity", bookModelHolder.get(position).isPopularity());
                 intent.putExtra("library", bookModelHolder.get(position).getLibrary());
+                intent.putExtra("price", String.valueOf(bookModelHolder.get(position).getPrice()) + "$");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -72,14 +78,13 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.viewHolder
     class viewHolder extends RecyclerView.ViewHolder
     {
         ImageView img;
-        TextView title, library, price;
+        TextView title, price;
         public viewHolder(@NonNull View itemView)
         {
             super(itemView);
             img=itemView.findViewById(R.id.image);
             price=itemView.findViewById(R.id.price);
             title=itemView.findViewById(R.id.title);
-            library=itemView.findViewById(R.id.library);
         }
     }
 

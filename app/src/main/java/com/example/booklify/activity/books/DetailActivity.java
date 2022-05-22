@@ -2,6 +2,7 @@ package com.example.booklify.activity.books;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.booklify.R;
+import com.example.booklify.model.BasketModel;
 import com.example.booklify.model.BookModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,12 +27,15 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
     ImageView img, img_bg;
-    TextView title, price, content;
+    TextView title, content;
     LinearLayout back;
+    Button price;
+
 
     LottieAnimationView bookmark;
     private boolean btnBookmark = false;
@@ -53,6 +58,7 @@ public class DetailActivity extends AppCompatActivity {
         img_bg = findViewById(R.id.image1);
         title = findViewById(R.id.title);
         content = findViewById(R.id.content);
+        price = findViewById(R.id.price);
 
 
 
@@ -84,7 +90,6 @@ public class DetailActivity extends AppCompatActivity {
         });
 
 
-//        price = findViewById(R.id.price);
 
 
         Glide.with(this)
@@ -99,7 +104,14 @@ public class DetailActivity extends AppCompatActivity {
 
         title.setText(getIntent().getStringExtra("title"));
         content.setText(getIntent().getStringExtra("content"));
-//        price.setText(getIntent().getStringExtra("price"));
+        price.setText(getIntent().getIntExtra("price",0));
+
+        price.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addBasket();
+            }
+        });
 
 
         final Object object = getIntent().getSerializableExtra("detail");
@@ -138,6 +150,7 @@ public class DetailActivity extends AppCompatActivity {
            bookmarkMap.put("category",  getIntent().getIntExtra("category",0));
            bookmarkMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
            bookmarkMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
+           bookmarkMap.put("price", getIntent().getIntExtra("price",0));
 
         if(mAuth.getCurrentUser() != null) {
             mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("bookmark").add(bookmarkMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -148,5 +161,29 @@ public class DetailActivity extends AppCompatActivity {
             });
         }
     }
+
+    private void addBasket() {
+        final HashMap<String, Object> bookmarkMap = new HashMap<>();
+
+        bookmarkMap.put("id", getIntent().getStringExtra("id"));
+        bookmarkMap.put("title", getIntent().getStringExtra("title"));
+        bookmarkMap.put("image", getIntent().getStringExtra("image"));
+        bookmarkMap.put("content",  getIntent().getStringExtra("content"));
+        bookmarkMap.put("author",  getIntent().getIntExtra("author",0));
+        bookmarkMap.put("category",  getIntent().getIntExtra("category",0));
+        bookmarkMap.put("popularity", getIntent().getBooleanExtra("popularity",false));
+        bookmarkMap.put("bookmark", getIntent().getBooleanExtra("bookmark",true));
+        bookmarkMap.put("price", getIntent().getIntExtra("price",0));
+
+        if(mAuth.getCurrentUser() != null) {
+            mFirestore.collection("CurrentUser").document(mAuth.getCurrentUser().getUid()).collection("cartShop").add(bookmarkMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentReference> task) {
+                    Toast.makeText(getApplicationContext(), "You may seen in basket", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
+
 
 }

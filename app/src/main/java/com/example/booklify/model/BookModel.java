@@ -13,14 +13,14 @@ public class BookModel implements Parcelable {
     int category;
     @SerializedName("photo")
     private String image;
-    double price;
+    int price;
     String title,library,content,id;
     @SerializedName("popularity")
     boolean popularity;
 
 
 
-    public BookModel(String image, double price, String title, String library) {
+    public BookModel(String image, int price, String title, String library) {
         this.image = image;
         this.price = price;
         this.title = title;
@@ -37,7 +37,7 @@ public class BookModel implements Parcelable {
         image = in.readString();
         category = in.readInt();
         author = in.readInt();
-        price = in.readDouble();
+        price = in.readInt();
         title = in.readString();
         library = in.readString();
         content = in.readString();
@@ -72,7 +72,7 @@ public class BookModel implements Parcelable {
         this.title = header;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
@@ -102,10 +102,6 @@ public class BookModel implements Parcelable {
 
     public void setAuthor(int author) {
         this.author = author;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public String getContent() {
