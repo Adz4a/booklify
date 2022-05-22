@@ -1,1 +1,1 @@
-# booklify
+# Booklify app
