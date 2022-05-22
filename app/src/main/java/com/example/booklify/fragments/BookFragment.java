@@ -11,12 +11,15 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booklify.R;
 import com.example.booklify.adapter.BookAdapter;
 import com.example.booklify.model.BookModel;
+import com.example.booklify.response.BookResponse;
 import com.example.booklify.viewmodels.BookListViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +28,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class BookFragment extends Fragment{
 
@@ -34,6 +40,7 @@ public class BookFragment extends Fragment{
     BookListViewModel viewModel;
     BookAdapter bookAdapter;
 
+    Map<String, Object> user;
     FirebaseFirestore db;
 
     @Nullable
@@ -49,6 +56,7 @@ public class BookFragment extends Fragment{
         EditText editText = view.findViewById(R.id.filter);
 
         db = FirebaseFirestore.getInstance();
+
 
         String type = getActivity().getIntent().getStringExtra("type");
 
@@ -68,6 +76,34 @@ public class BookFragment extends Fragment{
                 filter(s.toString());
             }
         });
+
+
+        viewModel = ViewModelProviders.of(this).get(BookListViewModel.class);
+        viewModel.getBookListObserver().observe(this, new Observer<BookResponse>() {
+                    @Override
+                    public void onChanged(BookResponse bookResponse) {
+                        if (bookResponse != null) {
+                            bookModelHolder = bookResponse.getBooks();
+                            bookAdapter.setMovieList(bookResponse.getBooks());
+                            recyclerView.setAdapter(bookAdapter);
+
+                            user = new HashMap<>();
+
+                            for (BookModel bookModel : bookModelHolder) {
+
+                                user.put("id", bookModel.getId());
+                                user.put("title", bookModel.getTitle());
+                                user.put("image", bookModel.getImage());
+                                user.put("content", bookModel.getContent());
+                                user.put("author", bookModel.getAuthor());
+                                user.put("category", bookModel.getCategory());
+                                user.put("popularity" , bookModel.isPopularity());
+                                user.put("price",bookModel.getPrice());
+                            }
+
+                        }
+                    }
+                });
 
 
         //Fantasy
