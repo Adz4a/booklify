@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.booklify.R;
 import com.example.booklify.activity.HomeActivity;
+import com.example.booklify.activity.password.ResetPasswordActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.resetPassword:
-                startActivity(new Intent(this, HomeActivity.class));
+                startActivity(new Intent(this, ResetPasswordActivity.class));
                 break;
             case R.id.login:
                 onResume();

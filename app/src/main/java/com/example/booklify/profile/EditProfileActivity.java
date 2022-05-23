@@ -151,7 +151,6 @@ public class EditProfileActivity extends AppCompatActivity {
         final ProgressDialog pd=new ProgressDialog(this);
         pd.setTitle("File Uploader");
         pd.show();
-        viewModel.postProfilePicture();
         final StorageReference reference = mStorage.getReference().child("profile_image")
                 .child(FirebaseAuth.getInstance().getUid());
         reference.putFile(profileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -168,7 +167,7 @@ public class EditProfileActivity extends AppCompatActivity {
                                 .child("username").setValue(username.getText().toString());
                         Toast.makeText(getApplicationContext(), "Profile Uploaded", Toast.LENGTH_LONG).show();
                         pd.dismiss();
-                        viewModel.putProfilePicture();
+
                     }
                 });
             }
@@ -177,6 +176,10 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                 float percent=(100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
                 pd.setMessage("Uploaded :"+(int)percent+"%");
+                if (percent==1000){
+                    viewModel.postProfilePicture();
+                    viewModel.putProfilePicture();
+                }
             }
         });
     }
