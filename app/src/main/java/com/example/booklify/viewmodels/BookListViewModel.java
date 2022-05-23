@@ -3,9 +3,13 @@ package com.example.booklify.viewmodels;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.booklify.model.UserModel;
+import com.example.booklify.repositories.BookRepository;
+import com.example.booklify.request.BookApiClient;
 import com.example.booklify.request.Services;
 import com.example.booklify.response.BookResponse;
 import com.example.booklify.utils.BookApi;
+import com.example.booklify.utils.ProfileApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +21,10 @@ public class BookListViewModel extends ViewModel {
 
     public BookListViewModel() {
         bookList = new MutableLiveData<>();
+        BookRepository bookRepository = BookRepository.getInstance();
     }
+
+
 
 
     public MutableLiveData<BookResponse> getBookListObserver() {
@@ -39,5 +46,9 @@ public class BookListViewModel extends ViewModel {
             }
         });
     }
+
+
+
+
 
 }

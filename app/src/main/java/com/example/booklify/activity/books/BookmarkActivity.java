@@ -3,6 +3,7 @@ package com.example.booklify.activity.books;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -118,6 +119,7 @@ public class BookmarkActivity extends AppCompatActivity {
 
 
     }
+
 
     private void filter(String text) {
         ArrayList<BookmarkModel> filteredList = new ArrayList<>();

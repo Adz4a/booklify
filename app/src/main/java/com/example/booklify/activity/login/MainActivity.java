@@ -2,6 +2,7 @@ package com.example.booklify.activity.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -55,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, HomeActivity.class));
                 break;
             case R.id.login:
-                userLogin();
+                onResume();
                 break;
         }
     }
 
-    private void userLogin() {
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("Tag", "HomeActivity: onResume()");
         String email = textEmail.getText().toString().trim();
         String password = textPassword.getText().toString().trim();
 
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 

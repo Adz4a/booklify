@@ -19,17 +19,4 @@ public interface BookApi {
     @GET("book/")
     Call<BookResponse> getBooks();
 
-
-    @POST("posts")
-    Call<BookResponse> createBooks(@Body BookResponse post);
-
-    @FormUrlEncoded
-    @POST("posts")
-    Call<BookResponse> createBooks(@FieldMap Map<String, String> fields);
-
-    @PUT("posts/{id}")
-    Call<BookResponse> putBooks(@Path("id") int id, @Body BookResponse post);
-
-    @DELETE("posts/{id}")
-    Call<Void> deleteBooks(@Path("id") int id);
 }

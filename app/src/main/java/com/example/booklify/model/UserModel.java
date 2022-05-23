@@ -19,6 +19,8 @@ public class UserModel {
         this.image = image;
     }
 
+
+
     public String getUsername() {
         return username;
     }

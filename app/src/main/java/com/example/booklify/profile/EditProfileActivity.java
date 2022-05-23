@@ -2,6 +2,7 @@ package com.example.booklify.profile;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.booklify.R;
+import com.example.booklify.model.BookModel;
 import com.example.booklify.model.UserModel;
+import com.example.booklify.response.BookResponse;
+import com.example.booklify.viewmodels.BookListViewModel;
+import com.example.booklify.viewmodels.UserListViewModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,10 +35,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.Nullable;
+import com.google.firebase.firestore.auth.User;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.HashMap;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -46,13 +56,15 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText username;
     private LinearLayout back;
 
-
+    public static final String PREFS_NAME = "MyPrefsFile";
 
     private Uri profileUri;
 
     FirebaseStorage mStorage;
     FirebaseAuth mAuth;
     FirebaseDatabase mDb;
+
+    UserListViewModel viewModel;
 
 
     @Override
@@ -66,6 +78,7 @@ public class EditProfileActivity extends AppCompatActivity {
         saveBtn = findViewById(R.id.save_btn);
         username = findViewById(R.id.username);
 
+
         mAuth = FirebaseAuth.getInstance();
         mDb = FirebaseDatabase.getInstance();
         mStorage = FirebaseStorage.getInstance();
@@ -78,7 +91,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
 
         mDb.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
@@ -115,6 +127,9 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+        viewModel = ViewModelProviders.of(this).get(UserListViewModel.class);
+        viewModel.getUserListObserver();
+
 
     }
 
@@ -123,9 +138,7 @@ public class EditProfileActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
-
-            if (data.getData() != null) {
+        if (data.getData() != null) {
                 profileUri = data.getData();
                 profileImage.setImageURI(profileUri);
 
@@ -138,7 +151,7 @@ public class EditProfileActivity extends AppCompatActivity {
         final ProgressDialog pd=new ProgressDialog(this);
         pd.setTitle("File Uploader");
         pd.show();
-
+        viewModel.postProfilePicture();
         final StorageReference reference = mStorage.getReference().child("profile_image")
                 .child(FirebaseAuth.getInstance().getUid());
         reference.putFile(profileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -155,6 +168,7 @@ public class EditProfileActivity extends AppCompatActivity {
                                 .child("username").setValue(username.getText().toString());
                         Toast.makeText(getApplicationContext(), "Profile Uploaded", Toast.LENGTH_LONG).show();
                         pd.dismiss();
+                        viewModel.putProfilePicture();
                     }
                 });
             }
@@ -166,6 +180,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 

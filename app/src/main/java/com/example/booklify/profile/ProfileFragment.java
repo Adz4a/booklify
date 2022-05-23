@@ -3,6 +3,7 @@ package com.example.booklify.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,8 @@ public class ProfileFragment extends Fragment {
     private ShapeableImageView profileImage;
     ProgressBar progressBar;
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,13 +83,7 @@ public class ProfileFragment extends Fragment {
         });
 
         logout = view.findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getContext(), MainActivity.class));
-            }
-        });
+
 
         editProfile = view.findViewById(R.id.edit_profile);
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +148,19 @@ public class ProfileFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d("Tag", "MainActivity: onStop()");
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
     }
 
 

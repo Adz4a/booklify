@@ -1,5 +1,6 @@
 package com.example.booklify.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,6 +44,8 @@ public class BookFragment extends Fragment{
     Map<String, Object> user;
     FirebaseFirestore db;
 
+    public static final String PREFS_NAME = "MyPrefsFile";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,7 +59,6 @@ public class BookFragment extends Fragment{
         EditText editText = view.findViewById(R.id.filter);
 
         db = FirebaseFirestore.getInstance();
-
 
         String type = getActivity().getIntent().getStringExtra("type");
 
@@ -207,6 +209,7 @@ public class BookFragment extends Fragment{
 
         return view;
     }
+
 
 
     private void filter(String text) {

@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.booklify.R;
@@ -15,6 +17,8 @@ import com.example.booklify.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
+
+//    public static final String PREFS_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,5 +60,13 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+
 
 }
